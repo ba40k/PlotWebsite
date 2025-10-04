@@ -1,2 +1,4 @@
-matlpotlib
-"fastapi"[standart]"
+matplotlib
+fastapi[standart]
+jinja 2
+pip install python-multipart
