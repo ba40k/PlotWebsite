@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Correlation</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Data Correlation Analysis</h1>
+        <form id="correlation-form" class="plot-form" target="correlation-frame">
+            <div class="form-group">
+                <label for="x">X values (comma separated):</label>
+                <input type="text" id="x" name="x" value="1,2,3,4,5">
+            </div>
+            <div class="form-group">
+                <label for="y_first">Y1 values (comma separated):</label>
+                <input type="text" id="y_first" name="y_first" value="2,4,6,8,10">
+            </div>
+            <div class="form-group">
+                <label for="y_second">Y2 values (comma separated):</label>
+                <input type="text" id="y_second" name="y_second" value="3,6,9,12,15">
+            </div>
+            <div class="form-group">
+                <label for="x_label">X axis label:</label>
+                <input type="text" id="x_label" name="x_label" value="X">
+            </div>
+            <div class="form-group">
+                <label for="y_first_label">Y1 graphic name:</label>
+                <input type="text" id="y_first_label" name="y_first_label" value="Y1">
+            </div>
+            <div class="form-group">
+                <label for="y_second_label">Y2 graphic name:</label>
+                <input type="text" id="y_second_label" name="y_second_label" value="Y2">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn primary" id="show-corr-btn">Show Correlation Plot</button>
+                <button type="button" id="download-corr-btn" class="btn secondary">Download Plot</button>
+            </div>
+        </form>
+        <iframe name="correlation-frame" class="plot-frame"></iframe>
+        <form action="/" method="get" class="back-form">
+            <button type="submit" class="btn">Back to Homepage</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('show-corr-btn').onclick = function() {
+            const x = encodeURIComponent(document.getElementById('x').value);
+            const y_first = encodeURIComponent(document.getElementById('y_first').value);
+            const y_second = encodeURIComponent(document.getElementById('y_second').value);
+            const x_label = encodeURIComponent(document.getElementById('x_label').value);
+            const y_first_label = encodeURIComponent(document.getElementById('y_first_label').value);
+            const y_second_label = encodeURIComponent(document.getElementById('y_second_label').value);
+            document.querySelector('iframe[name="correlation-frame"]').src =
+                `/data_correlation?x=${x}&y_first=${y_first}&y_second=${y_second}&x_label=${x_label}&y_first_label=${y_first_label}&y_second_label=${y_second_label}`;
+        };
+        document.getElementById('download-corr-btn').onclick = function() {
+            const x = encodeURIComponent(document.getElementById('x').value);
+            const y_first = encodeURIComponent(document.getElementById('y_first').value);
+            const y_second = encodeURIComponent(document.getElementById('y_second').value);
+            const x_label = encodeURIComponent(document.getElementById('x_label').value);
+            const y_first_label = encodeURIComponent(document.getElementById('y_first_label').value);
+            const y_second_label = encodeURIComponent(document.getElementById('y_second_label').value);
+            window.location.href =
+                `/data_correlation?x=${x}&y_first=${y_first}&y_second=${y_second}&x_label=${x_label}&y_first_label=${y_first_label}&y_second_label=${y_second_label}&download=1`;
+        };
+    </script>
+</body>
+</html>

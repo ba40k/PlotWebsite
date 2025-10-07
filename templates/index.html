@@ -5,9 +5,19 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Homepage</h1>
-    <form action="/plotting" method="get">
-        <button type="submit">Go to Plotting</button>
-    </form>
+    <div class="container">
+        <h1 class="title">Welcome to PlotWebsite</h1>
+        <p style="text-align:center; color:#4a5568; font-size:1.1rem; margin-bottom:32px;">
+            Create beautiful plots and analyze data correlations easily.
+        </p>
+        <div class="form-actions" style="justify-content:center;">
+            <form action="/plotting" method="get" style="display:inline;">
+                <button type="submit" class="btn primary">Go to Plotting</button>
+            </form>
+            <form action="/data_correlation" method="get" style="display:inline; margin-left:16px;">
+                <button type="submit" class="btn secondary">Data Correlation</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
